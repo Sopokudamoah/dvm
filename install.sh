@@ -10,16 +10,18 @@ if ! command -v unzip >/dev/null; then
 	exit 1
 fi
 
-if [ "$OS" = "Windows_NT" ]; then
-	target="x86_64-pc-windows-msvc"
-else
-	case $(uname -sm) in
-	"Darwin x86_64") target="x86_64-apple-darwin" ;;
-	"Darwin arm64") target="aarch64-apple-darwin" ;;
-	"Linux x86_64") target="x86_64-unknown-linux-gnu" ;;
-	*) echo "Unsupported OS + CPU combination: $(uname -sm)"; exit 1 ;;
-	esac
-fi
+# if [ "$OS" = "Windows_NT" ]; then
+# 	target="x86_64-pc-windows-msvc"
+# else
+# 	case $(uname -sm) in
+# 	"Darwin x86_64") target="x86_64-apple-darwin" ;;
+# 	"Darwin arm64") target="aarch64-apple-darwin" ;;
+# 	"Linux x86_64") target="x86_64-unknown-linux-gnu" ;;
+# 	*) echo "Unsupported OS + CPU combination: $(uname -sm)"; exit 1 ;;
+# 	esac
+# fi
+target="aarch64-apple-darwin"
+
 
 dvm_uri="https://cdn.jsdelivr.net/gh/justjavac/dvm_releases@main/dvm-${target}.zip"
 
